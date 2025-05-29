@@ -27,6 +27,7 @@
 #include "displayapp/screens/BatteryInfo.h"
 #include "displayapp/screens/Steps.h"
 #include "displayapp/screens/Dice.h"
+#include "displayapp/screens/PeerComm.h"
 #include "displayapp/screens/Weather.h"
 #include "displayapp/screens/PassKey.h"
 #include "displayapp/screens/Error.h"
@@ -118,6 +119,7 @@ DisplayApp::DisplayApp(Drivers::St7789& lcd,
                  nullptr,
                  this,
                  lvgl,
+                 nullptr,
                  nullptr,
                  nullptr} {
 }
@@ -717,6 +719,10 @@ void DisplayApp::Register(Pinetime::Controllers::MusicService* musicService) {
 
 void DisplayApp::Register(Pinetime::Controllers::NavigationService* NavigationService) {
   this->controllers.navigationService = NavigationService;
+}
+
+void DisplayApp::Register(Pinetime::Controllers::PeerCommService* peerService) {
+  this->controllers.peerCommService = peerService;
 }
 
 void DisplayApp::ApplyBrightness() {
